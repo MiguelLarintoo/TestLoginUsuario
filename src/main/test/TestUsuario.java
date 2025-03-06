@@ -60,10 +60,23 @@ class TestUsuario {
 
 	@Test
 	void testEsPasswordSegura() {
+	    Usuario u1 = new Usuario("Miguel", "Larinto", "12345");
+	    assertFalse(u1.esPasswordSegura());
+
+	    
+	    Usuario u2 = new Usuario("Miguel", "Larinto", "SecurePass123$");
+	    assertTrue(u2.esPasswordSegura());
 	}
+
 
 	@Test
 	void testHacerLogin() {
+	    Usuario u1 = new Usuario("Miguel", "Larinto", "12345");
+
+	    assertTrue(u1.hacerLogin("MiLa100", "12345"));
+	    assertFalse(u1.hacerLogin("MiLa100", "wrongPassword"));
+	    assertFalse(u1.hacerLogin("WrongUsername", "12345"));
 	}
+
 
 }
