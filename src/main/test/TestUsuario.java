@@ -41,9 +41,21 @@ class TestUsuario {
 		u3.hacerLogin("MirLaa100", "12345");
 		assertTrue(u3.esCuentaBloqueada());
 	}
-
+	/*
+	 * Este test debe de fallar debido a que el codigo de modificar constraseña 
+	 * no esta terminado
+	 * */
 	@Test
 	void testModificarPassword() {
+		 Usuario u1 = new Usuario("Miguel", "Larinto", "12345");
+		    boolean resultado = u1.modificarPassword("newPassword123$", "12345", "newPassword123$");
+		    assertTrue(resultado);
+
+		    resultado = u1.modificarPassword("newPassword123$", "wrongOldPassword", "newPassword123$");
+		    assertFalse(resultado);
+
+		    resultado = u1.modificarPassword("newPassword123$", "12345", "wrongVerification");
+		    assertFalse(resultado);
 	}
 
 	@Test
