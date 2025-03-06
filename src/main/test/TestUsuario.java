@@ -28,8 +28,7 @@ class TestUsuario {
 	@Test
 	void testEsCuentaNoBloqueada() {
 		Usuario u1 = new Usuario("Miguel", "Larinto", "12345");
-		Credencial c1 = new Credencial("Miguel", "Larinto", "12345");
-		assertTrue(u1.hacerLogin("MiLa100", "12345"));
+		assertTrue(u1.hacerLogin("MiLa102", "12345"));
 	}
 	
 	@Test
