@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.model.Credencial;
 import com.model.Usuario;
 
 class TestUsuario {
@@ -25,7 +26,21 @@ class TestUsuario {
 	}
 
 	@Test
+	void testEsCuentaNoBloqueada() {
+		Usuario u1 = new Usuario("Miguel", "Larinto", "12345");
+		Credencial c1 = new Credencial("Miguel", "Larinto", "12345");
+		assertTrue(u1.hacerLogin("MiLa100", "12345"));
+	}
+	
+	@Test
 	void testEsCuentaBloqueada() {
+		Usuario u3 = new Usuario("Miguel", "Larinto", "12345");
+		Credencial c2 = new Credencial("Miguel", "Larinto", "12345");
+		u3.hacerLogin("MirLa100", "12345");
+		u3.hacerLogin("MirLea100", "12345");
+		u3.hacerLogin("MirLaa100", "12345");
+		u3.hacerLogin("MirLaa100", "12345");
+		assertTrue(u3.esCuentaBloqueada());
 	}
 
 	@Test

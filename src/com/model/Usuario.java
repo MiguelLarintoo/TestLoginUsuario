@@ -36,6 +36,8 @@ public class Usuario {
         boolean esLogin = false;
         if (c1.comprobarPassword(password) && c1.getUsername().equals(username)) {
             esLogin = true;
+        }else {
+        	this.intentos ++;
         }
         return esLogin;
     }
